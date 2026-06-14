@@ -1,0 +1,6 @@
+import { Leaf, Recycle, Sprout, Wheat } from 'lucide-react'
+import { useLanguage } from '@/hooks/useLanguage'
+import SectionHeader from '@/components/ui-custom/SectionHeader.jsx'
+import StatCard from '@/components/ui-custom/StatCard.jsx'
+import { heroStats } from '@/data/mockData'
+export default function Impact(){const {t,isRTL}=useLanguage(); const icons=[Recycle,Leaf,Sprout,Wheat]; return <><section className="section section-soft"><div className="container"><SectionHeader title={t('impact.title')} subtitle={t('impact.subtitle')} /><p style={{textAlign:'center',maxWidth:760,margin:'0 auto',color:'var(--muted)'}}>{t('impact.desc')}</p></div></section><section className="section"><div className="container grid grid-4">{heroStats.map((s,i)=><StatCard key={s.key} value={s.value} label={t(`stats.${s.key}`)} />)}</div></section><section className="section section-soft"><div className="container grid grid-3">{['تقليل الهدر الغذائي','تحسين التربة','دعم الزراعة المحلية'].map((a,i)=>{const Icon=icons[i];return <div className="card pad" key={i}><div className="service-icon"><Icon/></div><h3>{isRTL?a:['Reducing food loss','Improving soil','Supporting local agriculture'][i]}</h3><p>{isRTL?'كل خطوة في FOOD LOOP تصنع أثراً بيئياً وزراعياً قابلاً للقياس.':'Each FOOD LOOP step creates measurable environmental and agricultural impact.'}</p></div>})}</div></section></>}

@@ -1,0 +1,8 @@
+{
+  "name": "FOOD LOOP",
+  "short_name": "FOOD LOOP",
+  "start_url": "/food---loop-/",
+  "display": "standalone",
+  "background_color": "#F7F3EA",
+  "theme_color": "#5f6f52"
+}

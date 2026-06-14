@@ -1,0 +1,1 @@
+export default function ProcessStep({ index, title, desc }) { return <div className="step card pad"><div className="step-number">{index}</div><div><h3>{title}</h3><p className="small-muted">{desc}</p></div></div> }

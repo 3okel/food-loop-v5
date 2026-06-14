@@ -1,0 +1,7 @@
+import { useState } from 'react'
+import { Package } from 'lucide-react'
+import { useLanguage } from '@/hooks/useLanguage'
+import SectionHeader from '@/components/ui-custom/SectionHeader.jsx'
+import { trackerBatches } from '@/data/mockData'
+export default function Tracker(){const {t,lang,isRTL}=useLanguage(); const [selected,setSelected]=useState(trackerBatches[0]); return <section className="section"><div className="container"><SectionHeader title={t('tracker.title')} subtitle={t('tracker.subtitle')} /><div className="tracker-layout"><div className="grid">{trackerBatches.map(b=><button key={b.id} className={`batch-btn ${selected?.id===b.id?'active':''}`} onClick={()=>setSelected(b)}><strong>{b.id}</strong><br/><span className="small-muted">{lang==='ar'?b.sourceAr:b.source} · {b.quantityKg} kg</span></button>)}</div><div className="card pad">{selected ? <><h3>{selected.id}</h3><p>{lang==='ar'?selected.sourceAr:selected.source} · {selected.quantityKg} kg</p>{selected.output.compostKg>0 && <p><strong>{t('tracker.output')}:</strong> {selected.output.compostKg}kg {isRTL?'سماد':'compost'} · {selected.output.seedlings} {isRTL?'شتلة':'seedlings'}</p>}<div className="timeline">{selected.stages.map((s,i)=><div className="info-item" key={i}><Package size={20}/><div><strong>{lang==='ar'?s.nameAr:s.name}</strong><br/><span className="small-muted">{s.date || (isRTL?'في الانتظار':'Pending')}</span></div></div>)}</div></> : t('tracker.select')}</div></div></div></section>}
+export function createPageUrl(pageName){ return '/' + pageName.replace(/ /g, '-') }

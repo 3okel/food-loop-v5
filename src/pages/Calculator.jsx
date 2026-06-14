@@ -1,0 +1,5 @@
+import { useState } from 'react'
+import { useLanguage } from '@/hooks/useLanguage'
+import SectionHeader from '@/components/ui-custom/SectionHeader.jsx'
+import StatCard from '@/components/ui-custom/StatCard.jsx'
+export default function Calculator(){const {t}=useLanguage(); const [kg,setKg]=useState(100); const compost=(kg*.35).toFixed(1), seedlings=Math.floor(kg/2), co2=(kg*2.1).toFixed(1); return <section className="section"><div className="container"><SectionHeader title={t('calculator.title')} subtitle={t('calculator.subtitle')} /><div className="card pad"><label>{t('calculator.inputLabel')}: <strong>{kg} kg</strong></label><input className="range" type="range" min="10" max="1000" value={kg} onChange={e=>setKg(Number(e.target.value))}/></div><div className="grid grid-3" style={{marginTop:26}}><StatCard value={`${compost} kg`} label={t('calculator.compostOutput')} /><StatCard value={seedlings} label={t('calculator.seedlingsProduced')} /><StatCard value={`${co2} kg`} label={t('calculator.co2Saved')} /></div></div></section>}
